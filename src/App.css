@@ -1,0 +1,143 @@
+.App {
+	text-align: center;
+}
+
+.App-logo {
+	animation: App-logo-spin infinite 20s linear;
+	height: 80px;
+}
+
+.App-header {
+	background-color: #222;
+	height: 120px;
+	padding: 20px;
+	color: white;
+}
+
+.App-title {
+	font-size: 1.5em;
+}
+
+.App-intro {
+	font-size: large;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+.container {
+	display: inline-flex;
+	margin-top: 20px;
+	flex-wrap: wrap;
+}
+/* .container div {
+	padding: 40px;
+} */
+.App-formControl-02 {
+	width: 300x !important;
+}
+.MuiInput-root-027 {
+	width: 300px !important;
+}
+
+.MuiInput-formControl-0254,
+.MuiFormControl-root-0186 {
+	width: 300px !important;
+	text-align: left !important;
+}
+
+.jss027 {
+	width: 300px !important;
+}
+#thanks {
+	padding: 80px;
+}
+.tipo {
+	padding: 20px;
+}
+.datos {
+	padding: 20px;
+	margin-top: 8px;
+}
+.tarjeta {
+	padding: 20px;
+	margin-top: 20px;
+}
+.MuiSelect-selectMenu-024 {
+	text-align: left !important;
+}
+.MuiButton-containedPrimary-070 {
+	background-color: #d67312 !important;
+	margin-top: 200px;
+}
+.MuiButton-containedPrimary-070:hover {
+	background-color: #a35c15 !important;
+}
+.buttons button,
+#back-button {
+	padding: 20px;
+	margin: 20px;
+	font-size: 20px;
+	font-weight: bolder;
+	border-radius: 10px;
+	background-image: linear-gradient(
+		to right,
+		#ecb90f 0%,
+		#f76138 51%,
+		#ec4314 100%
+	);
+}
+.buttons button:hover,
+#back-button:hover {
+	animation: bounce 0.5s;
+}
+
+@media (max-width: 425px) {
+	.App-title {
+		font-size: 16px;
+	}
+	.rccs__card {
+		width: 240px !important;
+	}
+	/* .MuiInput-root-027 {
+		width: 200px !important;
+	} */
+}
+/*
+@media (max-width: 540px) {
+	.container {
+		display: inline-block;
+		text-align: center;
+	}
+	.tipo {
+		width: 150px !important;
+		padding: 5px;
+	}
+	.MuiInput-root-027 {
+		width: 150px !important;
+	}
+} */
+@keyframes bounce {
+	0%,
+	20%,
+	60%,
+	100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40% {
+		-webkit-transform: translateY(-5px);
+		transform: translateY(-5px);
+	}
+
+	80% {
+		-webkit-transform: translateY(-2px);
+		transform: translateY(-2px);
+	}
+}

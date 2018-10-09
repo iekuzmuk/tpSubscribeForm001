@@ -1,3 +1,7 @@
+//falta: 1- revisar que no este el email en la base
+// 2- touched
+// 3- disable boton enviar luego de submit (queda mas lindo)
+
 import React, { Component } from 'react';
 import './App.css';
 import { withStyles } from '@material-ui/core/styles';
@@ -41,7 +45,7 @@ class App extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			subscriptionState: 0,		// 0=subscribiendo , 1 subscripion realizada
+			subscriptionState: 0,		// 0=subscribiendo , 1 subscripion realizada, 2 isSubmitting
 			subscriptionType: '0',			// 0=free, 1=premium
 			urlPost: 'https://server-subscripcion-jsbrbnwqfv.now.sh/subscripciones',
 			nombre: '', email: '', pais: '',
@@ -57,26 +61,30 @@ class App extends Component {
 	changeVariant = () =>	this.setState({ subscriptionType: !this.state.subscriptionType })
 
 	postSubscription = () => {
-	const { nombre, email, pais, subscriptionType,cardNum, cardExp, cardCvv} = this.state;
-	if(!(nombre && email && pais)){
-		alert('complete los campos');
-		return 0;
-	}
-	let postBody = {subscripcion: 'Free', nombre: nombre, email: email, pais: pais};
-	if(subscriptionType){
-		if(!(cardNum && cardExp && cardCvv)){
+		this.setState({ subscriptionState: 2 });
+
+		const { nombre, email, pais, subscriptionType,cardNum, cardExp, cardCvv, subscriptionState} = this.state;
+		if(subscriptionState==="2")return 0;
+
+		if(!(nombre && email && pais)){
 			alert('complete los campos');
 			return 0;
 		}
+		let postBody = {subscripcion: 'Free', nombre: nombre, email: email, pais: pais};
+		if(subscriptionType){
+			if(!(cardNum && cardExp && cardCvv)){
+				alert('complete los campos');
+				return 0;
+			}
 
-		postBody.subscripcion = "Premium"; postBody.cardNum=cardNum;postBody.cardExp=cardExp;postBody.cardCvv=cardCvv;
+			postBody.subscripcion = "Premium"; postBody.cardNum=cardNum;postBody.cardExp=cardExp;postBody.cardCvv=cardCvv;
+		}
+		console.log(JSON.stringify(postBody));
+		fetch(this.state.urlPost, {	method: 'post', headers: {'Content-Type': 'application/json'},body: JSON.stringify(postBody)})
+			.then(response => response.json())
+			.then(data => this.finalizeSubscription())
+			.catch(error => console.log(error,' catch the hoop'))
 	}
-	console.log(JSON.stringify(postBody));
-	fetch(this.state.urlPost, {	method: 'post', headers: {'Content-Type': 'application/json'},body: JSON.stringify(postBody)})
-		.then(response => response.json())
-		.then(data => this.finalizeSubscription())
-		.catch(error => console.log(error,' catch the hoop'))
-}
 
 	render () {
 		const { pais, subscriptionType} = this.state;

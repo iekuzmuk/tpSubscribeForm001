@@ -12,7 +12,7 @@
     "react-dom": "^16.5.1",
     "react-material-ui-form-validator": "^2.0.2",
     "react-payment": "^0.1.8",
-    "react-scripts": "1.1.5"
+    "react-scripts": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
